@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.8 on win32)" generated="20221017 20:58:05.065" rpa="false" schemaversion="3">
+<suite id="s1" name="TC 05 Dispense Now" source="C:\Users\P50036542\PycharmProjects\Automation\TestCases\TC_05_Dispense_Now.robot">
+<test id="s1-t1" name="Dispense Now Functionality" line="15">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${base_url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221017 20:58:05.602" level="INFO">Opening browser 'chrome' to base url 'http://localhost:8080'.</msg>
+<status status="PASS" starttime="20221017 20:58:05.602" endtime="20221017 20:58:08.307"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221017 20:58:18.313" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20221017 20:58:08.308" endtime="20221017 20:58:18.314"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221017 20:58:18.315" endtime="20221017 20:58:18.449"/>
+</kw>
+<kw name="Verify PageTitle" library="HomePage">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Technical Challenge for CDS</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20221017 20:58:18.454" level="INFO">Page title is 'Technical Challenge for CDS'.</msg>
+<status status="PASS" starttime="20221017 20:58:18.449" endtime="20221017 20:58:18.454"/>
+</kw>
+<status status="PASS" starttime="20221017 20:58:18.449" endtime="20221017 20:58:18.454"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.scrollTo(0,1500)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20221017 20:58:18.455" level="INFO">Executing JavaScript:
+window.scrollTo(0,1500)
+Without any arguments.</msg>
+<status status="PASS" starttime="20221017 20:58:18.455" endtime="20221017 20:58:18.459"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221017 20:58:21.470" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221017 20:58:18.460" endtime="20221017 20:58:21.470"/>
+</kw>
+<kw name="Verify Dispense Now button Text" library="HomePage">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${DispenseNow_button}</arg>
+<arg>Dispense Now</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20221017 20:58:21.471" level="INFO">Verifying element 'xpath://a[@href="dispense"]' contains exact text 'Dispense Now'.</msg>
+<status status="PASS" starttime="20221017 20:58:21.471" endtime="20221017 20:58:21.493"/>
+</kw>
+<status status="PASS" starttime="20221017 20:58:21.470" endtime="20221017 20:58:21.493"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<var>${background_color}</var>
+<arg>return (document.getElementByXPath("//a[@href="dispense"]").style.backgroundColor);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20221017 20:58:21.494" level="INFO">Executing JavaScript:
+return (document.getElementByXPath("//a[@href="dispense"]").style.backgroundColor);
+Without any arguments.</msg>
+<msg timestamp="20221017 20:58:21.639" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-16.png"&gt;&lt;img src="selenium-screenshot-16.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221017 20:58:21.640" level="FAIL">JavascriptException: Message: javascript error: missing ) after argument list
+  (Session info: chrome=106.0.5249.119)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x008D1ED3+2236115]
+	Ordinal0 [0x008692F1+1807089]
+	Ordinal0 [0x007766FD+812797]
+	Ordinal0 [0x007792B4+823988]
+	Ordinal0 [0x00779165+823653]
+	Ordinal0 [0x00779AF5+826101]
+	Ordinal0 [0x007D6452+1205330]
+	Ordinal0 [0x007C1A8C+1120908]
+	Ordinal0 [0x007D59E2+1202658]
+	Ordinal0 [0x007C18A6+1120422]
+	Ordinal0 [0x0079A73D+960317]
+	Ordinal0 [0x0079B71F+964383]
+	GetHandleVerifier [0x00B7E7E2+2743074]
+	GetHandleVerifier [0x00B708D4+2685972]
+	GetHandleVerifier [0x00962BAA+532202]
+	GetHandleVerifier [0x00961990+527568]
+	Ordinal0 [0x0087080C+1837068]
+	Ordinal0 [0x00874CD8+1854680]
+	Ordinal0 [0x00874DC5+1854917]
+	Ordinal0 [0x0087ED64+1895780]
+	BaseThreadInitThunk [0x754DFA29+25]
+	RtlGetAppContainerNamedObjectPath [0x77627B5E+286]
+	RtlGetAppContainerNamedObjectPath [0x77627B2E+238]
+</msg>
+<status status="FAIL" starttime="20221017 20:58:21.493" endtime="20221017 20:58:21.644"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>SKColour${background_color}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20221017 20:58:21.645" endtime="20221017 20:58:21.645"/>
+</kw>
+<kw name="Click Dispense Now button" library="HomePage">
+<status status="NOT RUN" starttime="20221017 20:58:21.646" endtime="20221017 20:58:21.646"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20221017 20:58:21.646" endtime="20221017 20:58:21.646"/>
+</kw>
+<kw name="Verify Cash Dispensed Message" library="HomePage">
+<status status="NOT RUN" starttime="20221017 20:58:21.647" endtime="20221017 20:58:21.647"/>
+</kw>
+<status status="FAIL" starttime="20221017 20:58:05.601" endtime="20221017 20:58:21.648">JavascriptException: Message: javascript error: missing ) after argument list
+  (Session info: chrome=106.0.5249.119)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x008D1ED3+2236115]
+	Ordinal0 [0x008692F1+1807089]
+	Ordinal0 [0x007766FD+812797]
+	Ordinal0 [0x007792B4+823988]
+	Ordinal0 [0x00779165+823653]
+	Ordinal0 [0x00779AF5+826101]
+	Ordinal0 [0x007D6452+1205330]
+	Ordinal0 [0x007C1A8C+1120908]
+	Ordinal0 [0x007D59E2+1202658]
+	Ordinal0 [0x007C18A6+1120422]
+	Ordinal0 [0x0079A73D+960317]
+	Ordinal0 [0x0079B71F+964383]
+	GetHandleVerifier [0x00B7E7E2+2743074]
+	GetHandleVerifier [0x00B708D4+2685972]
+	GetHandleVerifier [0x00962BAA+532202]
+	GetHandleVerifier [0x00961990+527568]
+	Ordinal0 [0x0087080C+1837068]
+	Ordinal0 [0x00874CD8+1854680]
+	Ordinal0 [0x00874DC5+1854917]
+	Ordinal0 [0x0087ED64+1895780]
+	BaseThreadInitThunk [0x754DFA29+25]
+	RtlGetAppContainerNamedObjectPath [0x77627B5E+286]
+	RtlGetAppContainerNamedObjectPath [0x77627B2E+238]
+</status>
+</test>
+<status status="FAIL" starttime="20221017 20:58:05.070" endtime="20221017 20:58:21.650"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="TC 05 Dispense Now">TC 05 Dispense Now</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
