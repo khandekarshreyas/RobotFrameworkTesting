@@ -17,3 +17,8 @@ Linux Ubuntu 12.04 and above, Fedora 21 and Debian 8 (64 bit only)
 1. Execute Single TC : Go to TestCases Folder and Open Terminal in IDE:  robot TC_01.robot
 2. Execute All TC : Go to Project and open Terminal :   robot TestCases
 
+# Reporting
+To view Reports : RobotFrameworkTesting/Reports/report.html
+To View Output Files : RobotFrameworkTesting/Reports/output.html
+To view Logs : RobotFrameworkTesting/Reports/log.xml
+
