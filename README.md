@@ -22,7 +22,7 @@ To View Output Files : RobotFrameworkTesting/Reports/output.html
 To view Logs : RobotFrameworkTesting/Reports/log.xml
 
 # CICD
-Integrated Project with CICD tool Jenkins
+Integrated Project with CICD tool Jenkins which pulls the latest code from github and executes
 
 # RoadMap
 BDD Support
