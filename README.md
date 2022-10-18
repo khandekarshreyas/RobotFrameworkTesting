@@ -1,14 +1,19 @@
 # RobotFrameworkTesting
 This project is created to design and develop automation framework to automate THE OPPENHEIMER PROJECT UI and API test cases using Robot Framework-Python.
 
-# Software Requirements
+#OS Requirements
 Windows 7 and above
 macOS 10.9 and above(64 bit only)
 Linux Ubuntu 12.04 and above, Fedora 21 and Debian 8 (64 bit only)
 
 # Softwares
-Install Python (3.7 and above)
-Install Robot Framework
-Install robotframework-seleniumlibrary and robotframework-requestslibrary
-Install Pycharm IDE(Any IDE compatible with Robot framework) and Intellibot plugin
+1. Install Python (3.7 and above)
+2. Install Robot Framework
+3. Install robotframework-seleniumlibrary and robotframework-requestslibrary, robotframework-jsonlibrary
+4. Install Pycharm IDE(Any IDE compatible with Robot framework) and Intellibot plugin
+5. Download and Install OPPENHEIMER PROJECT Jar File. 
+
+# Test Execution
+A. Execute Single TC : Go to TestCases Folder and Open Terminal in IDE:  robot TC_01.robot
+B Execute All TC : Go to Project and open Terminal :   robot TestCases
 
