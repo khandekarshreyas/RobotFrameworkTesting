@@ -7,13 +7,16 @@ Library    Collections
 ${base_url}     http://localhost:8080
 
 *** Test Cases ***
-Insert_Person
+Insert_MultiPersons
     create session    mysession   ${base_url}
-    ${body}=    create dictionary   birthday=04112014    gender=F    name=Aadya    natid=2014    salary=100000   tax=8000  birthday=24061987    gender=F    name=Chitkla    natid=1987    salary=800000   tax=24000    birthday=13101987    gender=M    name=Shreyas    natid=1986    salary=600000   tax=36000
+    ${body1}=   create dictionary    birthday=04112014    gender=F    name=Aadya    natid=2014    salary=100010   tax=23122
+    ${body2}=   create dictionary    birthday=13101986    gender=M    name=Shreyas    natid=1986    salary=200000   tax=50000
+    ${body3}=   create dictionary    birthday=24061987    gender=F    name=Chitkla    natid=1986    salary=200000   tax=50000
+    ${body}=    Create List     ${body1}    ${body2}    ${body3}
     log to console   ${body}
 
     ${header}=  create dictionary    Content-Type=application/json
-    ${response}=    post request    mysession    /calculator/insert     data=${body}     headers=${header}
+    ${response}=    post request    mysession    /calculator/insertMultiple    data=${body}     headers=${header}
 
     log to console    ${response.status_code}
     log to console    ${response.content}
@@ -32,7 +35,6 @@ Insert_Person
     ${res_body}=    convert to string    ${response1.content}
     should be equal    ${status_code}    200
     should contain  ${res_body}    Aadya
+    should contain  ${res_body}    62010.00
     should contain  ${res_body}    Chitkla
     should contain  ${res_body}    Shreyas
-    should contain  ${res_body}    62010.00
-    should contain  ${res_body}    62010.00

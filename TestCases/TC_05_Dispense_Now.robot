@@ -3,7 +3,9 @@ Library    SeleniumLibrary
 Library     RequestsLibrary
 Library    JSONLibrary
 Library    Collections
+Library    ../PageObjects/TaxReliefCalculation.py
 Resource    ../PageObjects/HomePage.robot
+
 
 *** Variables ***
 ${browser}      chrome
@@ -33,11 +35,11 @@ Dispense Now Functionality
    # ${background_color}=  Execute Javascript  return window.getComputedStyle(document._getElementsByXPath("//a[@href="dispense"]")[0]).getPropertyValue('background-color');
 #log  ${background_color}
     #${rgb}=     find_element_by_class_name("bar").value_of_css_property('background-color')
-    ${background_color}=  Execute Javascript  return (document.getElementByXPath("//a[@href="dispense"]").style.backgroundColor);
-    log to console    SKColour${background_color}
+    #${background_color}=  Execute Javascript  return (document.getElementByXPath("//a[@href="dispense"]").style.backgroundColor);
+    #HomePage.Verify Dispense Now button colour
 
     HomePage.Click Dispense Now button
     sleep    5s
     HomePage.Verify Cash Dispensed Message
 
-    #close browser
+    close browser

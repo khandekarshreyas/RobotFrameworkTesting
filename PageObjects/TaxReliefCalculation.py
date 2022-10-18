@@ -1,5 +1,7 @@
 # Importing the required functions to calculate age
 from datetime import date, datetime
+# from selenium import webdriver
+# from selenium.webdriver.common.by import By
 
 
 # Function to get the tax relief value
@@ -68,8 +70,18 @@ def getVariable(age):
     # returning ageVariable
     return ageVariable
 
-# COMMAND ----------
 
+# COMMAND ----------
+# def getBackgroundColour():
+    # driver = webdriver.Chrome()
+    # driver.get('http://localhost:8080')
+
+    # element = driver.find_element_by_class_name('btn btn-danger btn-block')
+    # driver.find_element(By.__class__())
+
+    # rgb = driver.find_element(By.CLASS_NAME, "btn btn-danger btn-block").value_of_css_property('background-color')
+    # print(driver.find_element(By.CLASS_NAME, "btn btn-danger btn-block").value_of_css_property('background-color'))
+    # return rgb
 # testing the results for Female
 # getTaxReliefValue("1687458", "3658", "12061985", "F")
 # print(getTaxReliefValue("1687458", "3658", "12061985", "F"))

@@ -28,7 +28,9 @@ Click Dispense Now button
 
 Verify Dispense Now button colour
     #${DispenseNow_button}   value_of_css_property
-    ${STYLE}=    Get Element Attribute    css:style    ${DispenseNow_button}
+    #${STYLE}=    Get Element Attribute    css:style    ${DispenseNow_button}
+    #${STYLE}=    TaxReliefCalculation.getBackgroundColour
+    #log to console    ${STYLE}
 
 Verify Dispense Now button Text
     Element Text Should Be    ${DispenseNow_button}    Dispense Now
