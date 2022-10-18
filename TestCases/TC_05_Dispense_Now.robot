@@ -32,7 +32,7 @@ Dispense Now Functionality
     #${bg color}=    Call Method    ${DispenseNow_button}    value_of_css_property    background-color
    # ${background_color}=  Execute Javascript  return window.getComputedStyle(document._getElementsByXPath("//a[@href="dispense"]")[0]).getPropertyValue('background-color');
 #log  ${background_color}
-    ${rgb}=     find_element_by_class_name("bar").value_of_css_property('background-color')
+    #${rgb}=     find_element_by_class_name("bar").value_of_css_property('background-color')
     ${background_color}=  Execute Javascript  return (document.getElementByXPath("//a[@href="dispense"]").style.backgroundColor);
     log to console    SKColour${background_color}
 

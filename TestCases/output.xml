@@ -1,150 +1,285 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.8 on win32)" generated="20221017 20:58:05.065" rpa="false" schemaversion="3">
-<suite id="s1" name="TC 05 Dispense Now" source="C:\Users\P50036542\PycharmProjects\Automation\TestCases\TC_05_Dispense_Now.robot">
-<test id="s1-t1" name="Dispense Now Functionality" line="15">
+<robot generator="Robot 5.0.1 (Python 3.10.8 on win32)" generated="20221018 01:12:06.283" rpa="false" schemaversion="3">
+<suite id="s1" name="TC 03 Upload CSV Verify Tax Relief Calculation" source="C:\Users\P50036542\PycharmProjects\TestCheckIn\RobotFrameworkTesting\TestCases\TC_03_Upload_CSV_Verify_Tax_Relief_Calculation.robot">
+<test id="s1-t1" name="Upload_CSV_File_And_Verify_Tax_Relief_Calculation" line="14">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221018 01:12:07.844" level="INFO">Creating Session using : alias=mysession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221018 01:12:07.843" endtime="20221018 01:12:07.845"/>
+</kw>
+<kw name="Get File For Streaming Upload" library="RequestsLibrary">
+<var>${file_name}</var>
+<arg>C:\\Users\\P50036542\\PycharmProjects\\TestCheckIn\\RobotFrameworkTesting\\TestCases/Book1.csv</arg>
+<doc>Opens and returns a file descriptor of a specified file to be passed as ``data`` parameter
+to other requests keywords.</doc>
+<msg timestamp="20221018 01:12:07.850" level="INFO">${file_name} = &lt;_io.BufferedReader name='C:\\Users\\P50036542\\PycharmProjects\\TestCheckIn\\RobotFrameworkTesting\\TestCases/Book1.csv'&gt;</msg>
+<status status="PASS" starttime="20221018 01:12:07.847" endtime="20221018 01:12:07.851"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${files}</var>
+<arg>file</arg>
+<arg>${file_name}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221018 01:12:07.853" level="INFO">${files} = {'file': &lt;_io.BufferedReader name='C:\\Users\\P50036542\\PycharmProjects\\TestCheckIn\\RobotFrameworkTesting\\TestCases/Book1.csv'&gt;}</msg>
+<status status="PASS" starttime="20221018 01:12:07.852" endtime="20221018 01:12:07.853"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${Header}</var>
+<arg>accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221018 01:12:07.855" level="INFO">${Header} = {'accept': 'application/json'}</msg>
+<status status="PASS" starttime="20221018 01:12:07.854" endtime="20221018 01:12:07.855"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>mysession</arg>
+<arg>/calculator/uploadLargeFileForInsertionToDatabase</arg>
+<arg>headers=${Header}</arg>
+<arg>files=${files}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20221018 01:12:08.811" level="INFO">POST Request : url=http://localhost:8080/calculator/uploadLargeFileForInsertionToDatabase 
+ path_url=/calculator/uploadLargeFileForInsertionToDatabase 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Length': '283', 'Content-Type': 'multipart/form-data; boundary=00a3933a69fe6245a3c230c1a4be288f'} 
+ body=b'--00a3933a69fe6245a3c230c1a4be288f\r\nContent-Disposition: form-data; name="file"; filename="Book1.csv"\r\n\r\nnatid,name,gender,salary,birthday,tax\r\n1234,ABC,M,25000,12091988,5000\r\n1235,PQR,F,23000,12111990,10000\r\n1236,XYZ,F,1687458,12061985,3658\r\n\r\n--00a3933a69fe6245a3c230c1a4be288f--\r\n' 
+ </msg>
+<msg timestamp="20221018 01:12:08.811" level="INFO">POST Response : url=http://localhost:8080/calculator/uploadLargeFileForInsertionToDatabase 
+ status=200, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Content-Length': '21', 'Date': 'Mon, 17 Oct 2022 19:42:08 GMT'} 
+ body=Successfully uploaded 
+ </msg>
+<msg timestamp="20221018 01:12:08.816" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221018 01:12:07.856" endtime="20221018 01:12:08.816"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221018 01:12:08.817" endtime="20221018 01:12:08.821"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221018 01:12:11.843" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221018 01:12:08.822" endtime="20221018 01:12:11.843"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${content}</var>
+<arg>${resp.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221018 01:12:11.845" level="INFO">${content} = Successfully uploaded</msg>
+<status status="PASS" starttime="20221018 01:12:11.844" endtime="20221018 01:12:11.845"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${content}</arg>
+<arg>Successfully uploaded</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221018 01:12:11.848" endtime="20221018 01:12:11.849"/>
+</kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${base_url}</arg>
 <arg>${browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20221017 20:58:05.602" level="INFO">Opening browser 'chrome' to base url 'http://localhost:8080'.</msg>
-<status status="PASS" starttime="20221017 20:58:05.602" endtime="20221017 20:58:08.307"/>
+<msg timestamp="20221018 01:12:11.852" level="INFO">Opening browser 'chrome' to base url 'http://localhost:8080'.</msg>
+<status status="PASS" starttime="20221018 01:12:11.851" endtime="20221018 01:12:17.230"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
-<arg>10s</arg>
+<arg>5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20221017 20:58:18.313" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20221017 20:58:08.308" endtime="20221017 20:58:18.314"/>
+<msg timestamp="20221018 01:12:22.238" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20221018 01:12:17.232" endtime="20221018 01:12:22.238"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20221017 20:58:18.315" endtime="20221017 20:58:18.449"/>
+<status status="PASS" starttime="20221018 01:12:22.239" endtime="20221018 01:12:22.361"/>
 </kw>
 <kw name="Verify PageTitle" library="HomePage">
 <kw name="Title Should Be" library="SeleniumLibrary">
 <arg>Technical Challenge for CDS</arg>
 <doc>Verifies that the current page title equals ``title``.</doc>
-<msg timestamp="20221017 20:58:18.454" level="INFO">Page title is 'Technical Challenge for CDS'.</msg>
-<status status="PASS" starttime="20221017 20:58:18.449" endtime="20221017 20:58:18.454"/>
+<msg timestamp="20221018 01:12:22.369" level="INFO">Page title is 'Technical Challenge for CDS'.</msg>
+<status status="PASS" starttime="20221018 01:12:22.362" endtime="20221018 01:12:22.369"/>
 </kw>
-<status status="PASS" starttime="20221017 20:58:18.449" endtime="20221017 20:58:18.454"/>
+<status status="PASS" starttime="20221018 01:12:22.362" endtime="20221018 01:12:22.369"/>
 </kw>
 <kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>window.scrollTo(0,1500)</arg>
+<arg>window.scrollTo(0,500)</arg>
 <doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20221017 20:58:18.455" level="INFO">Executing JavaScript:
-window.scrollTo(0,1500)
+<msg timestamp="20221018 01:12:22.371" level="INFO">Executing JavaScript:
+window.scrollTo(0,500)
 Without any arguments.</msg>
-<status status="PASS" starttime="20221017 20:58:18.455" endtime="20221017 20:58:18.459"/>
+<status status="PASS" starttime="20221018 01:12:22.370" endtime="20221018 01:12:22.379"/>
+</kw>
+<kw name="Click Refresh Tax Button" library="HomePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Refresh_Tax_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221018 01:12:22.380" level="INFO">Clicking element '//button[@class='btn btn-primary']'.</msg>
+<status status="PASS" starttime="20221018 01:12:22.380" endtime="20221018 01:12:22.458"/>
+</kw>
+<status status="PASS" starttime="20221018 01:12:22.379" endtime="20221018 01:12:22.459"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>3s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20221017 20:58:21.470" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20221017 20:58:18.460" endtime="20221017 20:58:21.470"/>
+<msg timestamp="20221018 01:12:25.469" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221018 01:12:22.460" endtime="20221018 01:12:25.469"/>
 </kw>
-<kw name="Verify Dispense Now button Text" library="HomePage">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<arg>${DispenseNow_button}</arg>
-<arg>Dispense Now</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<msg timestamp="20221017 20:58:21.471" level="INFO">Verifying element 'xpath://a[@href="dispense"]' contains exact text 'Dispense Now'.</msg>
-<status status="PASS" starttime="20221017 20:58:21.471" endtime="20221017 20:58:21.493"/>
-</kw>
-<status status="PASS" starttime="20221017 20:58:21.470" endtime="20221017 20:58:21.493"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<var>${background_color}</var>
-<arg>return (document.getElementByXPath("//a[@href="dispense"]").style.backgroundColor);</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20221017 20:58:21.494" level="INFO">Executing JavaScript:
-return (document.getElementByXPath("//a[@href="dispense"]").style.backgroundColor);
-Without any arguments.</msg>
-<msg timestamp="20221017 20:58:21.639" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-16.png"&gt;&lt;img src="selenium-screenshot-16.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg timestamp="20221017 20:58:21.640" level="FAIL">JavascriptException: Message: javascript error: missing ) after argument list
-  (Session info: chrome=106.0.5249.119)
-Stacktrace:
-Backtrace:
-	Ordinal0 [0x008D1ED3+2236115]
-	Ordinal0 [0x008692F1+1807089]
-	Ordinal0 [0x007766FD+812797]
-	Ordinal0 [0x007792B4+823988]
-	Ordinal0 [0x00779165+823653]
-	Ordinal0 [0x00779AF5+826101]
-	Ordinal0 [0x007D6452+1205330]
-	Ordinal0 [0x007C1A8C+1120908]
-	Ordinal0 [0x007D59E2+1202658]
-	Ordinal0 [0x007C18A6+1120422]
-	Ordinal0 [0x0079A73D+960317]
-	Ordinal0 [0x0079B71F+964383]
-	GetHandleVerifier [0x00B7E7E2+2743074]
-	GetHandleVerifier [0x00B708D4+2685972]
-	GetHandleVerifier [0x00962BAA+532202]
-	GetHandleVerifier [0x00961990+527568]
-	Ordinal0 [0x0087080C+1837068]
-	Ordinal0 [0x00874CD8+1854680]
-	Ordinal0 [0x00874DC5+1854917]
-	Ordinal0 [0x0087ED64+1895780]
-	BaseThreadInitThunk [0x754DFA29+25]
-	RtlGetAppContainerNamedObjectPath [0x77627B5E+286]
-	RtlGetAppContainerNamedObjectPath [0x77627B2E+238]
-</msg>
-<status status="FAIL" starttime="20221017 20:58:21.493" endtime="20221017 20:58:21.644"/>
+<kw name="Verify Table First Column Data" library="HomePage">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${firstColumnData}</var>
+<arg>${table_First_Column}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221018 01:12:25.534" level="INFO">${firstColumnData} = 1234</msg>
+<status status="PASS" starttime="20221018 01:12:25.469" endtime="20221018 01:12:25.534"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>SKColour${background_color}</arg>
+<arg>${firstColumnData}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20221017 20:58:21.645" endtime="20221017 20:58:21.645"/>
+<status status="PASS" starttime="20221018 01:12:25.534" endtime="20221018 01:12:25.534"/>
 </kw>
-<kw name="Click Dispense Now button" library="HomePage">
-<status status="NOT RUN" starttime="20221017 20:58:21.646" endtime="20221017 20:58:21.646"/>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${firstColumnData}</arg>
+<arg>1234</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20221018 01:12:25.534" endtime="20221018 01:12:25.534"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20221017 20:58:21.646" endtime="20221017 20:58:21.646"/>
+<status status="PASS" starttime="20221018 01:12:25.469" endtime="20221018 01:12:25.534"/>
 </kw>
-<kw name="Verify Cash Dispensed Message" library="HomePage">
-<status status="NOT RUN" starttime="20221017 20:58:21.647" endtime="20221017 20:58:21.647"/>
+<kw name="Verify Table Second Column Data" library="HomePage">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${secondColumnData}</var>
+<arg>${table_Second_Column}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221018 01:12:25.585" level="INFO">${secondColumnData} = 16000.00</msg>
+<status status="PASS" starttime="20221018 01:12:25.534" endtime="20221018 01:12:25.585"/>
 </kw>
-<status status="FAIL" starttime="20221017 20:58:05.601" endtime="20221017 20:58:21.648">JavascriptException: Message: javascript error: missing ) after argument list
-  (Session info: chrome=106.0.5249.119)
-Stacktrace:
-Backtrace:
-	Ordinal0 [0x008D1ED3+2236115]
-	Ordinal0 [0x008692F1+1807089]
-	Ordinal0 [0x007766FD+812797]
-	Ordinal0 [0x007792B4+823988]
-	Ordinal0 [0x00779165+823653]
-	Ordinal0 [0x00779AF5+826101]
-	Ordinal0 [0x007D6452+1205330]
-	Ordinal0 [0x007C1A8C+1120908]
-	Ordinal0 [0x007D59E2+1202658]
-	Ordinal0 [0x007C18A6+1120422]
-	Ordinal0 [0x0079A73D+960317]
-	Ordinal0 [0x0079B71F+964383]
-	GetHandleVerifier [0x00B7E7E2+2743074]
-	GetHandleVerifier [0x00B708D4+2685972]
-	GetHandleVerifier [0x00962BAA+532202]
-	GetHandleVerifier [0x00961990+527568]
-	Ordinal0 [0x0087080C+1837068]
-	Ordinal0 [0x00874CD8+1854680]
-	Ordinal0 [0x00874DC5+1854917]
-	Ordinal0 [0x0087ED64+1895780]
-	BaseThreadInitThunk [0x754DFA29+25]
-	RtlGetAppContainerNamedObjectPath [0x77627B5E+286]
-	RtlGetAppContainerNamedObjectPath [0x77627B2E+238]
-</status>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${secondColumnData}</arg>
+<arg>16000.00</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20221018 01:12:25.585" endtime="20221018 01:12:25.586"/>
+</kw>
+<status status="PASS" starttime="20221018 01:12:25.534" endtime="20221018 01:12:25.586"/>
+</kw>
+<kw name="Verify Tax Relief Calculation for All Heroes" library="HomePage">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${TaxReliefFor1234}</var>
+<arg>${Tax_Relief_First}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221018 01:12:25.615" level="INFO">${TaxReliefFor1234} = 16000.00</msg>
+<status status="PASS" starttime="20221018 01:12:25.586" endtime="20221018 01:12:25.615"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${TaxReliefFor1235}</var>
+<arg>${Tax_Relief_Second}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221018 01:12:25.652" level="INFO">${TaxReliefFor1235} = 10900.00</msg>
+<status status="PASS" starttime="20221018 01:12:25.615" endtime="20221018 01:12:25.652"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${TaxReliefFor1236}</var>
+<arg>${Tax_Relief_Third}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221018 01:12:25.693" level="INFO">${TaxReliefFor1236} = 842400.00</msg>
+<status status="PASS" starttime="20221018 01:12:25.652" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Get Tax Relief Value" library="TaxReliefCalculation">
+<var>${Result1}</var>
+<arg>25000</arg>
+<arg>5000</arg>
+<arg>12091988</arg>
+<arg>M</arg>
+<msg timestamp="20221018 01:12:25.693" level="INFO">16000.00</msg>
+<msg timestamp="20221018 01:12:25.693" level="INFO">${Result1} = 16000.00</msg>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Get Tax Relief Value" library="TaxReliefCalculation">
+<var>${Result2}</var>
+<arg>23000</arg>
+<arg>10000</arg>
+<arg>12111990</arg>
+<arg>F</arg>
+<msg timestamp="20221018 01:12:25.693" level="INFO">10900.00</msg>
+<msg timestamp="20221018 01:12:25.693" level="INFO">${Result2} = 10900.00</msg>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Get Tax Relief Value" library="TaxReliefCalculation">
+<var>${Result3}</var>
+<arg>1687458</arg>
+<arg>3658</arg>
+<arg>12061985</arg>
+<arg>F</arg>
+<msg timestamp="20221018 01:12:25.693" level="INFO">842400.00</msg>
+<msg timestamp="20221018 01:12:25.693" level="INFO">${Result3} = 842400.00</msg>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>AppValueFirst ${TaxReliefFor1234}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>CalculatedFirst ${Result1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>AppValueSecond ${TaxReliefFor1235}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>CalculatedSecond ${Result2}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>AppValueThird ${TaxReliefFor1236}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>CalculatedThird ${Result3}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${Result1}</arg>
+<arg>${TaxReliefFor1234}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.693"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${Result2}</arg>
+<arg>${TaxReliefFor1235}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221018 01:12:25.693" endtime="20221018 01:12:25.709"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${Result3}</arg>
+<arg>${TaxReliefFor1236}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221018 01:12:25.709" endtime="20221018 01:12:25.710"/>
+</kw>
+<status status="PASS" starttime="20221018 01:12:25.586" endtime="20221018 01:12:25.710"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221018 01:12:25.711" endtime="20221018 01:12:28.653"/>
+</kw>
+<status status="PASS" starttime="20221018 01:12:07.838" endtime="20221018 01:12:28.654"/>
 </test>
-<status status="FAIL" starttime="20221017 20:58:05.070" endtime="20221017 20:58:21.650"/>
+<status status="PASS" starttime="20221018 01:12:06.322" endtime="20221018 01:12:28.657"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="TC 05 Dispense Now">TC 05 Dispense Now</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC 03 Upload CSV Verify Tax Relief Calculation">TC 03 Upload CSV Verify Tax Relief Calculation</stat>
 </suite>
 </statistics>
 <errors>
