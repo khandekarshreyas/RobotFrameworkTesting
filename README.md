@@ -14,7 +14,8 @@ macOS 10.9 and above(64 bit only)
 
 # Test Execution
 1. Execute Single TC : Go to TestCases Folder and Open Terminal in IDE:  robot TC_01.robot
-2. Execute All TC : Go to Project and open Terminal :   robot TestCases
+2. To see all reports in Reports folder Go to TestCases Folder and Open Terminal in IDE: robot -r ../Reports/report.html -l ../Reports/log.html -o ../Reports/output.xml  TC_05_Dispense_Now.robot
+3. Execute All TC : Go to Project and open Terminal :   robot TestCases
 
 # Reporting
 To view Reports : RobotFrameworkTesting/Reports/report.html
