@@ -19,12 +19,16 @@ ${Tax_Relief_Third}   //td[text()='1236']/following-sibling::td
 Verify PageTitle
     title should be    Technical Challenge for CDS
 
+Scroll Till Page End
+    execute javascript    window.scrollTo(0,1500)
+
 Click Choose File Field
     press keys    ${chooseFile_Field}    RETURN
 
 Click Dispense Now button
     Element Should Be Enabled   ${DispenseNow_button}
     click element    ${DispenseNow_button}
+    sleep    5s
 
 Verify Dispense Now button colour
     #${DispenseNow_button}   value_of_css_property

@@ -8,9 +8,10 @@ Resource    ../Resources/Config.robot
 
 
 *** Test Cases ***
-TC_01_Insert_Person
+Insert_Person_NegativeScenario
     Start API TestCase
-    ${body}=    create dictionary   birthday=24061987    gender=F    name=Aadya    natid=2014    salary=100010   tax=23122
+    # Passing Nat Id field Blank to test negative scenario
+    ${body}=    create dictionary   birthday=24061987    gender=F    name=Aadya    natid=    salary=100010   tax=23122
     log to console   ${body}
 
     ${header}=  create dictionary    Content-Type=application/json
@@ -31,11 +32,5 @@ TC_01_Insert_Person
     #Validations
     ${status_code}=  convert to string    ${response1.status_code}
     ${res_body}=    convert to string    ${response1.content}
-    should be equal    ${status_code}    200
-    should contain  ${res_body}    Aadya
-    should contain  ${res_body}    62010.00
-
-
-
-
-
+    should be equal    ${status_code}    500
+    should contain  ${res_body}    Internal Server Error

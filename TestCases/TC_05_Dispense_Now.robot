@@ -5,23 +5,19 @@ Library    JSONLibrary
 Library    Collections
 Library    ../PageObjects/TaxReliefCalculation.py
 Resource    ../PageObjects/HomePage.robot
+Resource    ../Resources/Config.robot
 
 
 *** Variables ***
-${browser}      chrome
-${base_url}     http://localhost:8080
-${chooseFile_Field}     xpath://input[@type='file']
-${DispenseNow_button}   xpath://a[@href="dispense"]
+
 
 *** Test Cases ***
 Dispense Now Functionality
 
-    open browser    ${base_url}     ${browser}
-    sleep    10s
-    maximize browser window
+    Start UI TestCase
     HomePage.Verify PageTitle
-    execute javascript    window.scrollTo(0,1500)
-    sleep    3s
+    Scroll Till Page End
+
     #AC2
     #Element Text Should Be    ${DispenseNow_button}    Dispense Now
     HomePage.Verify Dispense Now button Text
@@ -39,7 +35,7 @@ Dispense Now Functionality
     #HomePage.Verify Dispense Now button colour
 
     HomePage.Click Dispense Now button
-    sleep    5s
+
     HomePage.Verify Cash Dispensed Message
 
     close browser

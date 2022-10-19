@@ -2,13 +2,14 @@
 Library     RequestsLibrary
 Library    JSONLibrary
 Library    Collections
+Resource    ../Resources/Config.robot
 
 *** Variables ***
-${base_url}     http://localhost:8080
+
 
 *** Test Cases ***
 Insert_MultiPersons
-    create session    mysession   ${base_url}
+    Start API TestCase
     ${body1}=   create dictionary    birthday=04112014    gender=F    name=Aadya    natid=201445    salary=100010   tax=23122
     ${body2}=   create dictionary    birthday=13101945    gender=M    name=Shreyas    natid=1945    salary=200000   tax=50000
     ${body3}=   create dictionary    birthday=24061987    gender=F    name=Chitkla    natid=1987    salary=200000   tax=50000
