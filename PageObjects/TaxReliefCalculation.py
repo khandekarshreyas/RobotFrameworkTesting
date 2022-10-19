@@ -83,8 +83,8 @@ def getVariable(age):
     # print(driver.find_element(By.CLASS_NAME, "btn btn-danger btn-block").value_of_css_property('background-color'))
     # return rgb
 # testing the results for Female
-# getTaxReliefValue("1687458", "3658", "12061985", "F")
-# print(getTaxReliefValue("1687458", "3658", "12061985", "F"))
+getTaxReliefValue("25000", "5000", "12091950", "M")
+print(getTaxReliefValue("25000", "5000", "12091950", "M"))
 # COMMAND ----------
 
 # testing the results for Male

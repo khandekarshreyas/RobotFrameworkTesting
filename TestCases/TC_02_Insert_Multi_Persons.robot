@@ -10,8 +10,8 @@ ${base_url}     http://localhost:8080
 Insert_MultiPersons
     create session    mysession   ${base_url}
     ${body1}=   create dictionary    birthday=04112014    gender=F    name=Aadya    natid=201445    salary=100010   tax=23122
-    ${body2}=   create dictionary    birthday=13101986    gender=M    name=Shreyas    natid=1986    salary=200000   tax=50000
-    ${body3}=   create dictionary    birthday=24061987    gender=F    name=Chitkla    natid=1986    salary=200000   tax=50000
+    ${body2}=   create dictionary    birthday=13101945    gender=M    name=Shreyas    natid=1945    salary=200000   tax=50000
+    ${body3}=   create dictionary    birthday=24061987    gender=F    name=Chitkla    natid=1987    salary=200000   tax=50000
     ${body}=    Create List     ${body1}    ${body2}    ${body3}
     log to console   ${body}
 
@@ -39,3 +39,6 @@ Insert_MultiPersons
     should contain  ${res_body}    77388.00
     should contain  ${res_body}    Chitkla
     should contain  ${res_body}    Shreyas
+    should contain  ${res_body}    7500.00
+    should contain  ${res_body}    1945
+    should contain  ${res_body}    120500.00

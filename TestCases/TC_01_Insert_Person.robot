@@ -14,7 +14,7 @@ Insert_Person
 
     ${header}=  create dictionary    Content-Type=application/json
     ${response}=    post request    mysession    /calculator/insert     data=${body}     headers=${header}
-
+    #${response}=    post on session     mysession    /calculator/insert    data=${body}    headers=${header}    expected_status=any
     log to console    ${response.status_code}
     log to console    ${response.content}
 
